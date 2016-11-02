@@ -4,6 +4,7 @@ namespace CoreDomain\Click\Repository;
 
 use CoreDomain\Base\Repository\AbstractRepository;
 use CoreDomain\Click\Model\Click;
+use CoreDomain\Click\Specification\AbstractUniqueClick;
 use CoreDomain\Click\Specification\UniqueClickSpecification;
 
 /**
@@ -16,14 +17,14 @@ class ClickRepository extends AbstractRepository
      * 
      * @return null|Click
      */
-    public function getBySpecification(UniqueClickSpecification $specification)
+    public function getBySpecification(AbstractUniqueClick $uniqueClick)
     {
         return $this->findOneBy(
             [
-                'uniqueClick.ua' => $specification->getUa(),
-                'uniqueClick.ip' => $specification->getIp(),
-                'uniqueClick.ref' => $specification->getRef(),
-                'uniqueClick.param1' => $specification->getParam1()
+                'ua' => $uniqueClick->getUa(),
+                'ip' => $uniqueClick->getIp(),
+                'ref' => $uniqueClick->getRef(),
+                'param1' => $uniqueClick->getParam1()
             ]
         );
     }

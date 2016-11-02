@@ -27,14 +27,14 @@ class ClickFactory
     /**
      * Create new click
      *
-     * @param UniqueClickSpecification $specification
-     * @param string                   $param2
+     * @param AbstractUniqueClick $uniqueClick
+     * @param string              $param2
      *
      * @return Click
      */
-    public function create(UniqueClickSpecification $specification, $param2)
+    public function create(AbstractUniqueClick $uniqueClick, $param2)
     {
-        $click = new Click($specification, $param2);
+        $click = new Click($uniqueClick, $param2);
         $this->clickRepository->save($click);
 
         return $click;

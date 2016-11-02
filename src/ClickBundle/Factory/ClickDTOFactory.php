@@ -78,7 +78,7 @@ class ClickDTOFactory
      */
     protected function checkDomain(Click $click)
     {
-        $badDomain = $this->badDomainRepository->findOneBy(['name' => $click->getUniqueClick()->getRef()]);
+        $badDomain = $this->badDomainRepository->findOneBy(['name' => $click->getRef()]);
 
         return null !== $badDomain;
     }

@@ -2,6 +2,8 @@
 
 namespace CoreDomain\Click\Model;
 
+use APY\DataGridBundle\Grid\Mapping as GRID;
+use CoreDomain\Click\Specification\AbstractUniqueClick;
 use CoreDomain\Click\Specification\UniqueClickSpecification;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,8 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity(repositoryClass="CoreDomain\Click\Repository\ClickRepository")
  * @ORM\Table(name="click")
+ *
+ * @GRID\Source(columns="id, ua, ip, ref, param1, param2, error, badDomain")
  */
-class Click
+class Click extends AbstractUniqueClick
 {
     /**
      * @var string
@@ -21,11 +25,6 @@ class Click
      * @ORM\GeneratedValue(strategy="UUID")
      */
     protected $id;
-
-    /**
-     * @ORM\Embedded(class = "CoreDomain\Click\Specification\UniqueClickSpecification", columnPrefix = false)
-     */
-    protected $uniqueClick;
 
     /**
      * @var string
@@ -51,12 +50,15 @@ class Click
     /**
      * Click constructor.
      * 
-     * @param UniqueClickSpecification $specification
-     * @param string                   $param2
+     * @param AbstractUniqueClick $specification
+     * @param string              $param2
      */
-    public function __construct(UniqueClickSpecification $specification, $param2)
+    public function __construct(AbstractUniqueClick $uniqueClick, $param2)
     {
-        $this->uniqueClick = $specification;
+        $this->ua     = $uniqueClick->getUa();
+        $this->ip     = $uniqueClick->getIp();
+        $this->ref    = $uniqueClick->getRef();
+        $this->param1 = $uniqueClick->getParam1();
         $this->param2 = $param2;
     }
 
@@ -66,14 +68,6 @@ class Click
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return UniqueClickSpecification
-     */
-    public function getUniqueClick()
-    {
-        return $this->uniqueClick;
     }
 
     /**
