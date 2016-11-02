@@ -7,8 +7,8 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        logging:   %kernel.debug%
-        profiling: %kernel.debug%
+        logging:   "%kernel.debug%"
+        profiling: "%kernel.debug%"
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
@@ -17,13 +17,13 @@ doctrine:
             CoreDomain\Click\Model\Click:
                 type: annotation
                 is_bundle: false
-                dir: %kernel.root_dir%/../src/CoreDomain/Click/Model
+                dir: "%kernel.root_dir%/../src/CoreDomain/Click/Model"
                 prefix: CoreDomain\Click
                 alias: CoreClick
             CoreDomain\BadDomain\Model\BadDomain:
                 type: annotation
                 is_bundle: false
-                dir: %kernel.root_dir%/../src/CoreDomain/BadDomain/Model
+                dir: "%kernel.root_dir%/../src/CoreDomain/BadDomain/Model"
                 prefix: CoreDomain\BadDomain
                 alias: CoreBadDomain
 #        metadata_cache_driver:
