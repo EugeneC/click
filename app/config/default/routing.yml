@@ -1,0 +1,3 @@
+auto_loader:
+    resource: .
+    type: route_auto

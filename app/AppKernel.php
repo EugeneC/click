@@ -14,9 +14,10 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new AppBundle\AppBundle(),
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle()
         ];
+
+        $this->registerProjectBundles($bundles);
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
@@ -45,6 +46,27 @@ class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+        $loader->load(__DIR__ . '/config/' . $this->getEnvironment() . '/config.yml');
+    }
+
+    /**
+     * @param array &$bundles
+     */
+    private function registerProjectBundles(&$bundles)
+    {
+        $searchPath = __DIR__ . '/../src';
+        $finder     = new \Symfony\Component\Finder\Finder();
+        $finder->files()
+            ->in($searchPath)
+            ->name('*Bundle.php');
+
+        foreach ($finder as $file) {
+            $path      = str_replace('.php', '', substr($file->getRealpath(), strrpos($file->getRealpath(), 'src') + 4));
+            $parts     = explode('/', $path);
+            $class     = array_pop($parts);
+            $namespace = implode('\\', $parts);
+            $class     = $namespace . '\\' . $class;
+            $bundles[] = new $class();
+        }
     }
 }

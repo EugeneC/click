@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    Bad domains<br/>
+    <a href="{{ path('bad.domain.add') }}">Add bad domain</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        {% for badDomain in badDomains %}
+            <tr>
+                <td>{{ badDomain.id }}</td>
+                <td>{{ badDomain.name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ path('click.homepage') }}">Return to Home page</a>
+{% endblock %}

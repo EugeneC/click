@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    Error page!<br/>
+    Information about this "click" has been saved already<br/>
+    <a href="{{ path('click.homepage') }}">Return to Home page</a>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        if({{ app.request.get('isBadDomain') }} == true)
+        {
+            window.setTimeout(function(){
+                window.location.href = "http://www.google.com";
+            }, 5000);
+        }
+    </script>
+{% endblock %}

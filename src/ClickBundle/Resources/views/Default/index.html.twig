@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+Hello World!
+
+<a href="{{ path('click.track', {'param1': 'some_value', 'param2': 'some_value'}) }}">Tracking Link</a>
+<a href="{{ path('bad.domain.all') }}">Bad domains</a>
+
+{% endblock %}

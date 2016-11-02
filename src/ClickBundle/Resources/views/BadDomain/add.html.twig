@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    Add new bad domain
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    <a href="{{ path('bad.domain.all') }}">Bad domains</a><br/>
+    <a href="{{ path('click.homepage') }}">Return to Home page</a>
+{% endblock %}

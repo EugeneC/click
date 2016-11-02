@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td>{{ click.id }}</td>
+        </tr>
+        <tr>
+            <td>User-Agent</td>
+            <td>{{ click.uniqueClick.ua }}</td>
+        </tr>
+        <tr>
+            <td>IP</td>
+            <td>{{ click.uniqueClick.ip }}</td>
+        </tr>
+        {% if click.uniqueClick.ref %}
+            <tr>
+                <td>Referer</td>
+                <td>{{ click.uniqueClick.ref }}</td>
+            </tr>
+        {% endif %}
+        {% if click.uniqueClick.param1 %}
+            <tr>
+                <td>Param1</td>
+                <td>{{ click.uniqueClick.param1 }}</td>
+            </tr>
+        {% endif %}
+        {% if click.param2 %}
+            <tr>
+                <td>Param2</td>
+                <td>{{ click.param2 }}</td>
+            </tr>
+        {% endif %}
+        <tr>
+            <td>Error</td>
+            <td>{{ click.error }}</td>
+        </tr>
+    </table>
+    <a href="{{ path('click.homepage') }}">Return to Home page</a>
+{% endblock %}

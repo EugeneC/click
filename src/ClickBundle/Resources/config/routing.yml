@@ -1,0 +1,29 @@
+click.homepage:
+    path:     /
+    defaults: { _controller: ClickBundle:Default:index }
+
+
+click.track:
+    path:     /click
+    defaults: { _controller: ClickBundle:Click:track }
+
+click.track.error:
+    path:  /error/{click}
+    methods: [GET]
+    defaults:
+        _controller: ClickBundle:Click:error
+
+click.track.success:
+    path:  /success/{click}
+    methods: [GET]
+    defaults:
+        _controller: ClickBundle:Click:success
+
+bad.domain.all:
+    path:     /domains
+    defaults: { _controller: ClickBundle:BadDomain:all }
+
+bad.domain.add:
+    path:     /domains/create
+    methods: [GET, POST]
+    defaults: { _controller: ClickBundle:BadDomain:add }

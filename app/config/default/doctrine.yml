@@ -1,0 +1,47 @@
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        logging:   %kernel.debug%
+        profiling: %kernel.debug%
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        mappings:
+            CoreDomain\Click\Model\Click:
+                type: annotation
+                is_bundle: false
+                dir: %kernel.root_dir%/../src/CoreDomain/Click/Model
+                prefix: CoreDomain\Click
+                alias: CoreClick
+            CoreDomain\BadDomain\Model\BadDomain:
+                type: annotation
+                is_bundle: false
+                dir: %kernel.root_dir%/../src/CoreDomain/BadDomain/Model
+                prefix: CoreDomain\BadDomain
+                alias: CoreBadDomain
+#        metadata_cache_driver:
+#            type: service
+#            id: doctrine_cache.providers.app_cache
+#        query_cache_driver:
+#            type: service
+#            id: doctrine_cache.providers.app_cache
+
+#doctrine_cache:
+#   providers:
+#       app_cache:
+#           memcached:
+#               servers:
+#                   %memcache_host% : %memcache_port%
+#
+#doctrine_migrations:
+#    dir_name: %kernel.root_dir%/DoctrineMigrations
+#    namespace: App\Migrations
+#    table_name: migration_versions
+#    name: Application Migrations

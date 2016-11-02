@@ -1,0 +1,7 @@
+services:
+    subscriber.click:
+        class: ClickBundle\EventSubscriber\ClickSubscriber
+        arguments:
+            - "@repository.click"
+        tags:
+            - { name: kernel.event_subscriber }

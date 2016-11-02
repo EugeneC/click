@@ -1,0 +1,46 @@
+imports:
+    - { resource: listener.yml }
+
+services:
+    base.routing.auto_loader:
+        class: ClickBundle\Routing\AutoLoader
+        arguments: ["@file_locator", "@kernel"]
+        tags:
+            - { name: routing.loader }
+
+    repository.abstract:
+        class: CoreDomain\Base\Repository\AbstractRepository
+        abstract: true
+        lazy: true
+
+    repository.click:
+        class: CoreDomain\Click\Repository\ClickRepository
+        lazy: true
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - CoreDomain\Click\Model\Click
+        parent:
+            repository.abstract
+
+    repository.bad.domain:
+        class: CoreDomain\BadDomain\Repository\BadDomainRepository
+        lazy: true
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - CoreDomain\BadDomain\Model\BadDomain
+        parent:
+            repository.abstract
+
+    factory.click.dto:
+        class: ClickBundle\Factory\ClickDTOFactory
+        lazy: true
+        arguments:
+            - "@repository.click"
+            - "@repository.bad.domain"
+
+    service.click.tracking:
+        class: ClickBundle\Service\TrackClickService
+        lazy: true
+        arguments:
+            - "@factory.click.dto"
+            - "@event_dispatcher"
