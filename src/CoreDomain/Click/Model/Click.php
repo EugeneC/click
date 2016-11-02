@@ -4,7 +4,6 @@ namespace CoreDomain\Click\Model;
 
 use APY\DataGridBundle\Grid\Mapping as GRID;
 use CoreDomain\Click\Specification\AbstractUniqueClick;
-use CoreDomain\Click\Specification\UniqueClickSpecification;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -50,7 +49,7 @@ class Click extends AbstractUniqueClick
     /**
      * Click constructor.
      * 
-     * @param AbstractUniqueClick $specification
+     * @param AbstractUniqueClick $uniqueClick
      * @param string              $param2
      */
     public function __construct(AbstractUniqueClick $uniqueClick, $param2)

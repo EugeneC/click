@@ -58,7 +58,6 @@ abstract class AbstractTest extends WebTestCase
      * Get information about entity
      *
      * @param string $url
-     * @param User   $user
      *
      * @return PageResult
      */

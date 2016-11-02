@@ -15,11 +15,6 @@ class PageHelperTest
     private $client;
 
     /**
-     * @var array
-     */
-    private $headers;
-
-    /**
      * @param Client $client
      */
     public function __construct(Client $client)
@@ -29,7 +24,6 @@ class PageHelperTest
 
     /**
      * @param Client $client
-     * @param array  $headers
      *
      * @return PageHelperTest
      */

@@ -12,22 +12,22 @@
         </tr>
         <tr>
             <td>User-Agent</td>
-            <td>{{ click.uniqueClick.ua }}</td>
+            <td>{{ click.ua }}</td>
         </tr>
         <tr>
             <td>IP</td>
-            <td>{{ click.uniqueClick.ip }}</td>
+            <td>{{ click.ip }}</td>
         </tr>
-        {% if click.uniqueClick.ref %}
+        {% if click.ref %}
             <tr>
                 <td>Referer</td>
-                <td>{{ click.uniqueClick.ref }}</td>
+                <td>{{ click.ref }}</td>
             </tr>
         {% endif %}
-        {% if click.uniqueClick.param1 %}
+        {% if click.param1 %}
             <tr>
                 <td>Param1</td>
-                <td>{{ click.uniqueClick.param1 }}</td>
+                <td>{{ click.param1 }}</td>
             </tr>
         {% endif %}
         {% if click.param2 %}

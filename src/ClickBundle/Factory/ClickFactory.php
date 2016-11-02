@@ -4,7 +4,7 @@ namespace ClickBundle\Factory;
 
 use CoreDomain\Click\Model\Click;
 use CoreDomain\Click\Repository\ClickRepository;
-use CoreDomain\Click\Specification\UniqueClickSpecification;
+use CoreDomain\Click\Specification\AbstractUniqueClick;
 
 /**
  * Class ClickFactory

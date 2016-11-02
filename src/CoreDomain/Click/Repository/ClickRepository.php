@@ -5,7 +5,6 @@ namespace CoreDomain\Click\Repository;
 use CoreDomain\Base\Repository\AbstractRepository;
 use CoreDomain\Click\Model\Click;
 use CoreDomain\Click\Specification\AbstractUniqueClick;
-use CoreDomain\Click\Specification\UniqueClickSpecification;
 
 /**
  * Class ClickRepository
@@ -13,7 +12,7 @@ use CoreDomain\Click\Specification\UniqueClickSpecification;
 class ClickRepository extends AbstractRepository
 {
     /**
-     * @param UniqueClickSpecification $specification
+     * @param AbstractUniqueClick $uniqueClick
      * 
      * @return null|Click
      */

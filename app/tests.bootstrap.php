@@ -34,4 +34,4 @@ if (isset($_ENV['BOOTSTRAP_CLEAR_CACHE_ENV'])) {
     ));
 }
 
-require __DIR__ . '/../var/bootstrap.php.cache';
+require __DIR__ . '/autoload.php';

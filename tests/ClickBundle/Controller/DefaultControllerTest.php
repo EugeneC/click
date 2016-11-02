@@ -2,16 +2,20 @@
 
 namespace ClickBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Tests\AbstractTest;
 
-class DefaultControllerTest extends WebTestCase
+/**
+ * Class DefaultControllerTest
+ */
+class DefaultControllerTest extends AbstractTest
 {
-    public function testIndex()
+    /**
+     * @test
+     */
+    public function index()
     {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', '/');
-
-        $this->assertContains('Hello World!', $client->getResponse()->getContent());
+        $url      = $this->generateUrl('click.homepage');
+        $response = $this->getPage($url)->getResponse();
+        $this->assertContains('Hello World!', $response->getContent());
     }
 }
